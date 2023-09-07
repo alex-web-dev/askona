@@ -1,70 +1,241 @@
-include data/_pages.pug
+extends layouts/_layout.pug
 
-doctype html
-html(lang="ru")
-	head
-		title Askona
-		meta(charset='utf-8')
-		meta(http-equiv='X-UA-Compatible' content='IE=edge')
-		meta(name='viewport' content='width=device-width, initial-scale=1')
-		meta(name='format-detection' content='telephone=no')
-		link(rel='shortcut icon' href='assets/favicon.png')
-		link(rel='stylesheet' href='assets/css/styles.css')
-		style(type='text/css').
-			body {
-				color: #272727;
-				font-size: 16px;
-				background: #ccc;
-				padding: 0 16px;
-			}
+block vars
+	- var bottom_menu_link = 'home'
 
-			.all-pages {
-				width: 100%;
-				max-width: 600px;
-				max-height: calc(100% - 40px);
-				overflow: hidden;
-				border-radius: 10px;
-				background: #fff;
-				display: flex;
-				flex-direction: column;
-				margin: 20px auto;
-			}
+block title
+	| Главная
 
-			.all-pages__title {
-				font-size: 30px;
-				padding: 10px 0;
-				border-bottom: 1px solid #ebebeb;
-				text-align: center;
-			}
+block content
+	main.main
+		section.events
+			.events__slider
+				.events__slider-main.swiper.js-events-slider
+					.swiper-wrapper
+						.swiper-slide
+							a.events__slider-item(href="catalog-divany.html")
+								img.events__slider-img(src="assets/img/events/2.jpg" alt="")
+						.swiper-slide
+							a.events__slider-item(href="catalog-divany.html")
+								img.events__slider-img(src="assets/img/events/3.jpg" alt="")
+						.swiper-slide
+							a.events__slider-item(href="catalog-divany.html")
+								img.events__slider-img(src="assets/img/events/4.jpg" alt="")
+						.swiper-slide
+							a.events__slider-item(href="catalog-divany.html")
+								img.events__slider-img(src="assets/img/events/1.jpg" alt="")
+					.swiper-pagination.events__slider-pagination.js-events-slider-pagination
 
-			.all-pages__list {
-				counter-reset: list;
-				list-style: none;
-				overflow-y: auto
-			}
+		section.categories.main__categories
+			.container
+				.categories__slider
+					.categories__slider-main.swiper.js-categories-slider
+						.swiper-wrapper
+							.swiper-slide
+								a.category.categories__item(href="catalog-divany.html") 
+									.category__header
+										h3.category__title Матрасы
+										span.category__count Товаров: 241
+									.category__price
+										span.category__price-text от
+										span.category__price-value 90 400 ₸
+										+icon('price_category', 'category__price-bg')
+									img.category__img(src="temp/categories/1.png" alt="")
 
-			.all-pages__item {
-				display: block;
-				text-align: left;
-				border-bottom: 1px solid #ebebeb;
-			}
+							.swiper-slide
+								a.category.categories__item(href="catalog-divany.html") 
+									.category__header
+										h3.category__title Диваны
+										span.category__count Товаров: 155
+									.category__price
+										span.category__price-text от
+										span.category__price-value 290 100 ₸
+										+icon('price_category', 'category__price-bg')
+									img.category__img(src="temp/categories/2.png" alt="")
 
-			.all-pages__link {
-				padding: 10px 20px;
-				display: block;
-				color: rgb(0, 170, 145);
-				text-decoration: none;
-			}
+							.swiper-slide
+								a.category.categories__item(href="catalog-divany.html") 
+									.category__header
+										h3.category__title Кровати
+										span.category__count Товаров: 57
+									.category__price
+										span.category__price-text от
+										span.category__price-value 370 000 ₸
+										+icon('price_category', 'category__price-bg')
+									img.category__img(src="temp/categories/3.png" alt="")
 
-			.all-pages__item .all-pages__link:before {
-				counter-increment: list;
-				content: counter(list) ". ";
-				color: #272727;
-			}
-	body
-		.all-pages
-				.all-pages__title Список страниц
-				ul.all-pages__list
-					each item in pages_list
-						li.all-pages__item
-							a.all-pages__link(href=item.url) #{item.title}
+							.swiper-slide
+								a.category.categories__item(href="catalog-divany.html") 
+									.category__header
+										h3.category__title Одеяла
+										span.category__count Товаров: 49
+									.category__price
+										span.category__price-text от
+										span.category__price-value 49 200 ₸
+										+icon('price_category', 'category__price-bg')
+									img.category__img(src="temp/categories/4.png" alt="")
+
+							.swiper-slide
+								a.category.categories__item(href="catalog-divany.html") 
+									.category__header
+										h3.category__title Подушки
+										span.category__count Товаров: 124
+									.category__price
+										span.category__price-text от
+										span.category__price-value 23 500 ₸
+										+icon('price_category', 'category__price-bg')
+									img.category__img(src="temp/categories/5.png" alt="")
+
+							.swiper-slide
+								a.category.categories__item(href="catalog-matrasi.html") 
+									.category__header
+										h3.category__title Матрасы
+										span.category__count Товаров: 241
+									.category__price
+										span.category__price-text от
+										span.category__price-value 90 400 ₸
+										+icon('price_category', 'category__price-bg')
+									img.category__img(src="temp/categories/1.png" alt="")
+
+					.swiper-pagination.categories__slider-pagination.js-categories-slider-pagination
+					.categories__slider-navigation
+						button.btn-next.categories__slider-next.js-categories-slider-next
+							+icon('arrow_right', 'icon--primary btn-next__icon')
+						button.btn-prev.categories__slider-prev.js-categories-slider-prev
+							+icon('arrow_left', 'icon--primary btn-prev__icon')
+
+		section.section.products
+			.container
+				h2.title2.products__title Хиты продаж
+				.products__slider
+					.products__slider-main.js-products-slider.swiper
+						.swiper-wrapper
+							each i in [0, 1, 2, 4, 5]
+								.swiper-slide
+									+card(i, {class: 'product--slide products__slider-item'})
+						.swiper-pagination.products__slider-pagination.js-products-slider-pagination
+						.swiper-scrollbar.products__slider-scrollbar
+					.products__slider-navigation
+						button.btn-next.products__slider-next.js-products-slider-next
+							+icon('arrow_right', 'icon--primary btn-next__icon')
+						button.btn-prev.products__slider-prev.js-products-slider-prev
+							+icon('arrow_left', 'icon--primary btn-prev__icon')
+
+		section.section.products
+			.container
+				h2.title2.products__title Новинки
+				.products__slider
+					.products__slider-main.js-products-slider.swiper
+						.swiper-wrapper
+							each i in [11, 5, 6, 7, 1]
+								.swiper-slide
+									+card(i, {class: 'product--slide products__slider-item'})
+						.swiper-pagination.products__slider-pagination.js-products-slider-pagination
+						.swiper-scrollbar.products__slider-scrollbar
+					.products__slider-navigation
+						button.btn-next.products__slider-next.js-products-slider-next
+							+icon('arrow_right', 'icon--primary btn-next__icon')
+						button.btn-prev.products__slider-prev.js-products-slider-prev
+							+icon('arrow_left', 'icon--primary btn-prev__icon')
+
+		section.section.advantages
+			.container
+				.advantages__slider.swiper
+					.swiper-wrapper
+						.swiper-slide.advantages__slide
+							.advantages__item
+								+icon('adresa_magazinov', 'advantages__item-icon')
+								h3.advantages__item-title Адреса магазинов
+								p.advantages__item-text 
+									| Найдите ближайший салон 
+									| или удобный для вас пункт самовывоза
+								button.btn.btn--white.advantages__item-btn Показать на карте
+						.swiper-slide.advantages__slide.advantages__slide--main
+							.advantages__item.advantages__item--main
+								img.advantages__item-img(src="assets/img/advantages/discount.jpg" alt="")
+								button.btn.btn--white.advantages__item-btn Узнать больше
+						.swiper-slide.advantages__slide
+							.advantages__item
+								+icon('club_sna', 'advantages__item-icon')
+								h3.advantages__item-title Клуб здорового сна
+								p.advantages__item-text 
+									| Вступайте в клуб и получайте скидки 
+									| и дополнительные привилегии
+								button.btn.btn--white.advantages__item-btn Получить скидку								
+					.swiper-pagination.advantages__slider-pagination
+
+		section.section.features 
+			.container 
+				.features__content
+					.features__header 
+						h2.title2.features__title Askona заряжает сном
+						p.text.features__text
+							| Мы постоянно разрабатываем инновационные решения и выпускаем только такую продукцию, в которой уверены на 100%.
+							| День за днем мы работаем для того, чтобы каждую ночь вы погружались в здоровый сон, набираясь сил для новых свершений.
+					.features__slider.swiper
+						.swiper-wrapper
+							.swiper-slide
+								.features__item
+									.features__item-icon-box
+										+icon('laboratory', 'features__item-icon')
+									h3.features__item-title Единственная в России лаборатория сна
+									p.text.features__item-text
+										| Сертифицированная по стандартам ISO. В ней мы создаем будущее.
+										| И тестируем все новые модели матрасов, диванов и кроватей Askona.
+							.swiper-slide
+								.features__item
+									.features__item-icon-box
+										+icon('marka_n1', 'features__item-icon')
+									h3.features__item-title Марка №1 в России
+									p.text.features__item-text
+										| По результатам народного голосования. Мы прошли 
+										| стажировку в лучших немецких и  шведских компаниях, 
+										| чтобы перенять стандарты качества и поднять их на еще более высокий уровень.
+							.swiper-slide
+								.features__item
+									.features__item-icon-box
+										+icon('eco', 'features__item-icon')
+									h3.features__item-title Забота об окружающей среде
+									p.text.features__item-text
+										| Мы максимально бережно взаимодействуем с природой, обеспечивая её сохранность.
+										| Доля перерабатываемых отходов в Askona составляет 100%.			
+						.swiper-pagination.features__slider-pagination
+
+		section.section.features
+			.container
+				.features__content.features__content--gray
+					.features__header 
+						h2.title2 Всегда на связи
+						p.text.features__text
+							| Мы постоянно разрабатываем инновационные решения и выпускаем только такую продукцию, в которой уверены на 100%.
+							| День за днем мы работаем для того, чтобы каждую ночь вы погружались в здоровый сон, набираясь сил для новых свершений.
+					.features__slider.swiper
+						.swiper-wrapper
+							.swiper-slide.features__slide
+								.features__item
+									.features__item-icon-box
+										+icon('napishite_zvonite', 'features__item-icon')
+									h3.title3.features__item-title Напишите или позвоните нам
+									p.text.features__item-text
+										| Констультанты Askona готовы ответить на любой <br>
+										| ваш вопрос в режиме онлайн.
+									a.link.link--primary.features__item-link(href="#") Задать вопрос
+							.swiper-slide.features__slide
+								.features__item
+									.features__item-icon-box
+										+icon('videokonsultaciya', 'features__item-icon')
+									h3.title3.features__item-title Получите видеоконсультацию
+									p.text.features__item-text
+										| Констультанты Askona покажут вам товар онлайн <br>
+										| и ответят на любые вопросы.
+									a.link.link--primary.features__item-link(href="#") Позвонить по видео
+							.swiper-slide.features__slide
+								.features__item
+									.features__item-icon-box
+										+icon('faq', 'features__item-icon')
+									h3.title3.features__item-title Узнайте ответы на частые вопросы
+									p.text.features__item-text
+										| Мы собрали самые популярные вопросы пользователей <br>
+										| в одном удобном разделе.
+									a.link.link--primary.features__item-link(href="#") Открыть раздел
+						.swiper-pagination.features__slider-pagination

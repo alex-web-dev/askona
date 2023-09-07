@@ -1,5 +1,5 @@
-import del from 'del';
+import {deleteAsync} from 'del';
 
-export const clean = () => {
-  return del(app.path.buildFolder)
+export const clean = async () => {
+  return await deleteAsync(app.path.buildFolder, {dryRun: true});
 }

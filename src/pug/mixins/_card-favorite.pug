@@ -3,8 +3,8 @@ mixin card_favorite(index, options = {})
     - var item = cards_list[index || 0]
     .product(class=(options.class || ''))
         .product__main
-            a.product__img-box(href="#") 
-                .product__slider.swiper
+            .product__img-box
+                a.product__slider.swiper(href=item.link) 
                     .swiper-wrapper
                         each i in item.img_indexes
                             .swiper-slide
@@ -21,7 +21,7 @@ mixin card_favorite(index, options = {})
             .product__inf
                 .product__inf-content
                     h3.product__name
-                        a.link(href="#") !{item.name}
+                        a.link(href=item.link) !{item.name}
                     if item.desc
                         span.text.product__desc !{item.desc}
                     .product__price 

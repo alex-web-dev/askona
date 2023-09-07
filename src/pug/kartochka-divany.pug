@@ -10,8 +10,8 @@ block content
 	main.main
 		.container
 			.breadcrumbs
-				a.link.link--line.breadcrumbs__link(href="#") Каталог
-				a.link.link--line.breadcrumbs__link(href="#") Диваны
+				a.link.link--line.breadcrumbs__link(href="catalog-divany.html") Каталог
+				a.link.link--line.breadcrumbs__link(href="catalog-divany.html") Диваны
 				span.breadcrumbs__current DayNight Nova
 
 		section.single-product
@@ -323,7 +323,7 @@ block content
 					aside.single-product__sidebar
 						.single-product__info
 							.single-product__icon-btns
-								button.icon-btn.icon-btn--gray.single-product__icon-btn
+								a.icon-btn.icon-btn--gray.single-product__icon-btn(href="lk-sravnenie.html") 
 									+icon('sravnenie', 'icon-btn__icon')
 								button.wishlist-btn.single-product__icon-btn
 									+icon('izbrannoe', 'wishlist-btn__icon')
@@ -421,8 +421,8 @@ block content
 
 	.product-menu
 		button.btn.product-menu__btn Добавить в корзину
-		button.icon-btn.icon-btn--gray.product-menu__icon-btn
-			+icon('sravnenie', 'icon-btn__icon')
+		a.icon-btn.icon-btn--gray.product-menu__icon-btn(href="lk-sravnenie.html") 
+					+icon('sravnenie', 'icon-btn__icon')
 		button.wishlist-btn.product-menu__icon-btn
 			+icon('izbrannoe', 'wishlist-btn__icon')
 

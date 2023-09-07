@@ -240,6 +240,7 @@ window.addEventListener('load', () => {
 
   const $productSliders = document.querySelectorAll('.product__slider');
   $productSliders.forEach($slider => {
+    const $product = $slider.closest('.product');
     let sliderCard = null;
     let $paginationClone = null
     $slider.addEventListener('mouseenter', function () {
@@ -271,10 +272,10 @@ window.addEventListener('load', () => {
 
       const $sliderBullets = $pagination.querySelectorAll('.swiper-pagination-bullet');
       $sliderBullets.forEach($bullet => {
-        $bullet.addEventListener('mouseenter', () => {
+        $bullet.addEventListener('mouseenter', (e) => {
           $bullet.click();
         });
-      })
+      });
     });
 
     $slider.addEventListener('mouseleave', function () {
@@ -286,6 +287,15 @@ window.addEventListener('load', () => {
       $paginationClone.remove();
 
       sliderCard.destroy();
+    });
+
+    $slider.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      const url = $slider.href;
+      if (e.isTrusted && url) {
+        location.href = url;  
+      }
     });
 
     function clonePagination($slider) {

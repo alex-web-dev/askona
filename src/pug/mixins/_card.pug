@@ -3,8 +3,8 @@ mixin card(index, options = {})
     - var item = cards_list[index || 0]
     .product(class=(options.class || ''))
         .product__main
-            a.product__img-box(href="#") 
-                .product__slider.swiper
+            .product__img-box 
+                a.product__slider.swiper(href=item.link)
                     .swiper-wrapper
                         each i in item.img_indexes
                             .swiper-slide
@@ -18,12 +18,12 @@ mixin card(index, options = {})
                     span.product-label.product__label(class='product-label--' + item.label.type) #{item.label.text}
                 button.wishlist-btn.product__wishlist(class=`${item.wishlist ? 'wishlist-btn--active' : ''}`)
                     +icon('izbrannoe', 'wishlist-btn__icon')
-                button.icon-btn.icon-btn--gray.product__compare
+                a.icon-btn.icon-btn--gray.product__compare(href="lk-sravnenie.html") 
                     +icon('sravnenie', 'icon-btn__icon')
             .product__inf
                 .product__inf-content
                     h3.product__name
-                        a.link(href="#") !{item.name}
+                        a.link(href=item.link) !{item.name}
                     if item.desc
                         span.text.product__desc !{item.desc}
                     .product__price 
@@ -66,4 +66,4 @@ mixin card(index, options = {})
                             option(value="82x220") 82 см х 220 см
                         +icon('arrow_right', 'icon--primary select__icon')
                     .product__btn-group
-                        button.btn.product__btn Подробнее
+                        a.btn.product__btn(href=item.link)  Подробнее
